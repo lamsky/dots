@@ -8,4 +8,8 @@ public class Game {
     public Object getRedPlayer() {
         return "";
     }
+
+    public Object getBluePlayer() {
+        return "";
+    }
 }

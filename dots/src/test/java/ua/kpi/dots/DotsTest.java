@@ -1,11 +1,18 @@
 package ua.kpi.dots;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class DotsTest {
+    private Game dots;
+
+    @Before
+    public void init() {
+        dots = new Game(new Player(), new Player());
+    }
 
     // We have a field
     @Test
@@ -34,8 +41,12 @@ public class DotsTest {
     // We have 2 players
     @Test
     public void shouldExistRedPlayerWhenGameCreates() {
-        Game dots = new Game(new Player(), new Player());
         assertNotNull(dots.getRedPlayer());
+    }
+
+    @Test
+    public void shouldExistBluePlayerWhenGameCreates() {
+        assertNotNull(dots.getBluePlayer());
     }
 
     // Players take turns
