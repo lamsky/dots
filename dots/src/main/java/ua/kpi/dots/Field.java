@@ -1,13 +1,16 @@
 package ua.kpi.dots;
 
 public class Field {
+    private int size;
+
     public Field(int size) {
-        if (size < 0) {
+        if (size <= 0) {
             throw new IllegalArgumentException();
         }
+        this.size = size;
     }
 
     public int getSize() {
-        return 0;
+        return size;
     }
 }

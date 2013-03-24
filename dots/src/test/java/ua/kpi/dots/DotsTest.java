@@ -9,20 +9,25 @@ public class DotsTest {
     // We have a field
     @Test
     public void shouldExistFieldWhenGameCreated() {
-        new Field(0);
+        new Field(1);
     }
 
     // Field has some size
     @Test
     public void shouldFieldHasSizeWhenCreated() {
-        Field field = new Field(0);
+        Field field = new Field(1);
 
-        assertEquals(0, field.getSize());
+        assertEquals(1, field.getSize());
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowExceptionWhenSizeIsNegative() {
         new Field(-1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowExceptionWhenSizeIsZero() {
+        new Field(0);
     }
 
     // We have 2 players
