@@ -20,6 +20,11 @@ public class DotsTest {
         assertEquals(0, field.getSize());
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowExceptionWhenSizeIsNegative() {
+        new Field(-1);
+    }
+
     // We have 2 players
     // Players take turns
     // Dots can be 2 types = from 2 players
