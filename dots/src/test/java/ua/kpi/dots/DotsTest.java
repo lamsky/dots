@@ -3,22 +3,19 @@ package ua.kpi.dots;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 public class DotsTest {
 
     // We have a field
     @Test
     public void shouldExistFieldWhenGameCreated() {
-        Game game = new Game();
-        assertNotNull(game.getField());
+        new Field();
     }
 
     // Field has some size
     @Test
     public void shouldFieldHasSizeWhenCreated() {
-        Game game = new Game();
-        Field field = game.getField();
+        Field field = new Field();
 
         assertEquals(0, field.getSize());
     }
