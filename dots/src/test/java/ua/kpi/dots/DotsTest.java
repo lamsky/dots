@@ -9,13 +9,13 @@ public class DotsTest {
     // We have a field
     @Test
     public void shouldExistFieldWhenGameCreated() {
-        new Field();
+        new Field(0);
     }
 
     // Field has some size
     @Test
     public void shouldFieldHasSizeWhenCreated() {
-        Field field = new Field();
+        Field field = new Field(0);
 
         assertEquals(0, field.getSize());
     }
