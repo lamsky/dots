@@ -2,6 +2,7 @@ package ua.kpi.dots;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class DotsTest {
@@ -14,6 +15,14 @@ public class DotsTest {
     }
 
     // Field has some size
+    @Test
+    public void shouldFieldHasSizeWhenCreated() {
+        Game game = new Game();
+        Field field = game.getField();
+
+        assertEquals(0, field.getSize());
+    }
+
     // We have 2 players
     // Players take turns
     // Dots can be 2 types = from 2 players
