@@ -3,6 +3,7 @@ package ua.kpi.dots;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class DotsTest {
 
@@ -31,6 +32,12 @@ public class DotsTest {
     }
 
     // We have 2 players
+    @Test
+    public void shouldExistRedPlayerWhenGameCreates() {
+        Game dots = new Game(new Player(), new Player());
+        assertNotNull(dots.getRedPlayer());
+    }
+
     // Players take turns
     // Dots can be 2 types = from 2 players
     // Dots can be placed on the field
