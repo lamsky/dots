@@ -1,8 +1,18 @@
 package ua.kpi.dots;
 
+import org.junit.Test;
+
+import static org.junit.Assert.assertNotNull;
+
 public class DotsTest {
 
     // We have a field
+    @Test
+    public void shouldExistFieldWhenGameCreated() {
+        Game game = new Game();
+        assertNotNull(game.getField());
+    }
+
     // Field has some size
     // We have 2 players
     // Players take turns
