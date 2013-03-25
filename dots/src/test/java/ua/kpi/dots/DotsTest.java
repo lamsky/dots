@@ -89,6 +89,12 @@ public class DotsTest {
 
     }
 
+    @Test
+    public void shouldBusyCell_WhenDotPutInCell() {
+        field.putDot(1, 1, new Dot());
+        assertEquals(false, field.isFree(1, 1));
+
+    }
 
 
 

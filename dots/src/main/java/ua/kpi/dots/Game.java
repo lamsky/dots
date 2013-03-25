@@ -5,14 +5,16 @@ public class Game {
     Player blue;
 
     public Game(Player red, Player blue) {
+        this.red = red;
+        this.blue = blue;
 
     }
 
-    public Object getRedPlayer() {
-        return "";
+    public Player getRedPlayer() {
+        return red;
     }
 
-    public Object getBluePlayer() {
-        return "";
+    public Player getBluePlayer() {
+        return blue;
     }
 }
