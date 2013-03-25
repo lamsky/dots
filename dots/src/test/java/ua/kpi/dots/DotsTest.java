@@ -56,51 +56,51 @@ public class DotsTest {
         assertNotNull(new Dot());
     }
 
+    // Dots can be placed on the field
     @Test
     public void shouldPutDotOnField() {
-        field.putDot(1, 1, new Dot());
+        field.placeDot(1, 1, new Dot());
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowException_WhenXLargerThanSize() {
         int x = field.getSize() + 1;
-        field.putDot(x, 1, new Dot());
-
+        field.placeDot(x, 1, new Dot());
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowException_WhenXNegative() {
         int x = -1;
-        field.putDot(x, 1, new Dot());
-
+        field.placeDot(x, 1, new Dot());
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowException_WhenYLargerThanSize() {
         int y = field.getSize() + 1;
-        field.putDot(1, y, new Dot());
-
+        field.placeDot(1, y, new Dot());
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowException_WhenYNegative() {
         int y = -1;
-        field.putDot(1, y, new Dot());
-
+        field.placeDot(1, y, new Dot());
     }
 
     @Test
-    public void shouldBusyCell_WhenDotPutInCell() {
-        field.putDot(1, 1, new Dot());
+    public void shouldBusyCell_WhenDotPlacedInCell() {
+        field.placeDot(1, 1, new Dot());
         assertEquals(false, field.isFree(1, 1));
-
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowException_WhenPlacedDotInBusyCell() {
+        field.placeDot(0, 0, new Dot());
+        field.placeDot(0, 0, new Dot());
+    }
 
 
     // Players take turns
     // Dots can be 2 types = from 2 players
-    // Dots can be placed on the field
     // When there is a loop, which consists of same type dots,
     //   it's become closed
     // All enemy dots in closed loop are captured

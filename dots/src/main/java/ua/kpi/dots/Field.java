@@ -18,8 +18,11 @@ public class Field {
         return size;
     }
 
-    public void putDot(int x, int y, Dot dot) {
+    public void placeDot(int x, int y, Dot dot) {
         if((x >= size) || (x < 0) || (y >= size) || (y < 0)) {
+            throw new IllegalArgumentException();
+        }
+        if( dots[xyToIndex(x, y)] != null) {
             throw new IllegalArgumentException();
         }
         dots[xyToIndex(x, y)] = dot;
