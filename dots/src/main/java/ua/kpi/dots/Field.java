@@ -13,4 +13,11 @@ public class Field {
     public int getSize() {
         return size;
     }
+
+    public void putDot(int x, int y, Dot dot) {
+        if((x > size) || (x < 0) || (y > size) || (y < 0)) {
+            throw new IllegalArgumentException();
+        }
+        //To change body of created methods use File | Settings | File Templates.
+    }
 }

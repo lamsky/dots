@@ -8,10 +8,12 @@ import static org.junit.Assert.assertNotNull;
 
 public class DotsTest {
     private Game game;
+    private Field field;
 
     @Before
     public void init() {
         game = new Game(new Player(), new Player());
+        field = new Field(10);
     }
 
     // We have a field
@@ -52,6 +54,39 @@ public class DotsTest {
     @Test
     public void shouldCreateDot() {
         assertNotNull(new Dot());
+    }
+
+    @Test
+    public void shouldPutDotOnField() {
+        field.putDot(1, 1, new Dot());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowException_WhenXLargerThanSize() {
+        int x = field.getSize() + 1;
+        field.putDot(x, 1, new Dot());
+
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowException_WhenXNegative() {
+        int x = -1;
+        field.putDot(x, 1, new Dot());
+
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowException_WhenYLargerThanSize() {
+        int y = field.getSize() + 1;
+        field.putDot(1, y, new Dot());
+
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowException_WhenYNegative() {
+        int y = -1;
+        field.putDot(1, y, new Dot());
+
     }
 
 
