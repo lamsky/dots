@@ -7,11 +7,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class DotsTest {
-    private Game dots;
+    private Game game;
 
     @Before
     public void init() {
-        dots = new Game(new Player(), new Player());
+        game = new Game(new Player(), new Player());
     }
 
     // We have a field
@@ -41,12 +41,17 @@ public class DotsTest {
     // We have 2 players
     @Test
     public void shouldExistRedPlayer_WhenGameCreates() {
-        assertNotNull(dots.getRedPlayer());
+        assertNotNull(game.getRedPlayer());
     }
 
     @Test
     public void shouldExistBluePlayer_WhenGameCreates() {
-        assertNotNull(dots.getBluePlayer());
+        assertNotNull(game.getBluePlayer());
+    }
+
+    @Test
+    public void shouldCreateDot() {
+        assertNotNull(new Dot());
     }
 
 
