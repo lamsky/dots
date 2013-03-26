@@ -3,8 +3,7 @@ package ua.kpi.dots;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 public class DotsTest {
     private Game game;
@@ -37,6 +36,20 @@ public class DotsTest {
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowException_WhenSizeIsZero() {
         new Field(0);
+    }
+
+    @Test
+    public void shouldFieldBeEmpty_WhenCreated() {
+        Field field = new Field(3);
+        assertFreeField(field);
+    }
+
+    private void assertFreeField(Field field) {
+        for (int x = 0; x < field.getSize(); x++) {
+            for (int y = 0; y < field.getSize(); y++) {
+                assertTrue(field.isFree(x, y));
+            }
+        }
     }
 
     // We have 2 players
@@ -146,11 +159,11 @@ public class DotsTest {
         Dot dotR = new Dot('◉');
         field.placeDot(1, 1, dotB);
         field.placeDot(2, 2, dotR);
-        assertEquals(field.toString(),
+        assertEquals(
                 "∙∙∙∙\n"
               + "∙◯∙∙\n"
               + "∙∙◉∙\n"
-              + "∙∙∙∙\n");
+              + "∙∙∙∙\n", field.toString());
     }
 
     @Test
@@ -160,12 +173,12 @@ public class DotsTest {
         Dot dotR = new Dot('◉');
         field.placeDot(1, 1, dotB);
         field.placeDot(3, 3, dotR);
-        assertEquals(field.toString(),
-                          "∙∙∙∙∙\n"
-                        + "∙◯∙∙∙\n"
-                        + "∙∙∙∙∙\n"
-                        + "∙∙∙◉∙\n"
-                        + "∙∙∙∙∙\n");
+        assertEquals(
+                "∙∙∙∙∙\n"
+              + "∙◯∙∙∙\n"
+              + "∙∙∙∙∙\n"
+              + "∙∙∙◉∙\n"
+              + "∙∙∙∙∙\n", field.toString());
     }
 
 
