@@ -19,13 +19,16 @@ public class Field {
     }
 
     public void placeDot(int x, int y, Dot dot) {
-        if ((x >= size) || (x < 0) || (y >= size) || (y < 0)) {
+        if (isValidPosition(x, y)) {
+            dots[x][y] = dot;
+        } else {
             throw new IllegalArgumentException();
         }
-        if (dots[x][y] != null) {
-            throw new IllegalArgumentException();
-        }
-        dots[x][y] = dot;
+
+    }
+
+    private boolean isValidPosition(int x, int y) {
+        return (x < size) && (x >= 0) && (y < size) && (y >= 0) && isFree(x, y);
     }
 
     public boolean isFree(int x, int y) {
