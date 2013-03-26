@@ -40,7 +40,11 @@ public class Field {
     public String toString() {
         String result = "";
         for (int index = 0; index < size * size; index ++) {
-            result += "∙";
+            if (dots[index] == null) {
+                result += "∙";
+            } else {
+                result += dots[index].toString();
+            }
             if (index%size == size -1) {
                 result += "\n";
             }

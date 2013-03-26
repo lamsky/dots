@@ -26,7 +26,6 @@ public class DotsTest {
     @Test
     public void shouldFieldHasSize_WhenCreated() {
         Field field = new Field(1);
-
         assertEquals(1, field.getSize());
     }
 
@@ -105,6 +104,12 @@ public class DotsTest {
     }
 
     @Test
+    public void shouldFieldBeString_WhenSizeIs2() {
+        Field field = new Field(2);
+        assertEquals(field.toString(),"∙∙\n∙∙\n" );
+    }
+
+    @Test
     public void shouldFieldBeString_WhenSizeIs3() {
         Field field = new Field(3);
         assertEquals(field.toString(),"∙∙∙\n∙∙∙\n∙∙∙\n" );
@@ -116,6 +121,52 @@ public class DotsTest {
         assertEquals(field.toString(),"∙∙∙∙\n∙∙∙∙\n∙∙∙∙\n∙∙∙∙\n" );
     }
 
+    @Test
+    public void shouldDotBeString() {
+        Dot dot = new Dot();
+        assertEquals(dot.toString(), "@");
+    }
+
+    @Test
+    public void shouldSetDotLabelSymbol1() {
+        Dot dot = new Dot('◯');
+        assertEquals(dot.toString(), "◯");
+    }
+
+    @Test
+    public void shouldSetDotLabelSymbol2() {
+        Dot dot = new Dot('◉');
+        assertEquals(dot.toString(), "◉");
+    }
+
+    @Test
+    public void shouldBeDisplayedDots_whenPlacedOnField4() {
+        Field field = new Field(4);
+        Dot dotB = new Dot('◯');
+        Dot dotR = new Dot('◉');
+        field.placeDot(1, 1, dotB);
+        field.placeDot(2, 2, dotR);
+        assertEquals(field.toString(),
+                "∙∙∙∙\n"
+              + "∙◯∙∙\n"
+              + "∙∙◉∙\n"
+              + "∙∙∙∙\n");
+    }
+
+    @Test
+    public void shouldBeDisplayedDots_whenPlacedOnField5() {
+        Field field = new Field(5);
+        Dot dotB = new Dot('◯');
+        Dot dotR = new Dot('◉');
+        field.placeDot(1, 1, dotB);
+        field.placeDot(3, 3, dotR);
+        assertEquals(field.toString(),
+                          "∙∙∙∙∙\n"
+                        + "∙◯∙∙∙\n"
+                        + "∙∙∙∙∙\n"
+                        + "∙∙∙◉∙\n"
+                        + "∙∙∙∙∙\n");
+    }
 
 
     // Players take turns
