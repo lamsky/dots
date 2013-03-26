@@ -98,6 +98,25 @@ public class DotsTest {
         field.placeDot(0, 0, new Dot());
     }
 
+    @Test
+    public void shouldPlayerPlaceDot() {
+        Player player = new Player();
+        player.placeDot();
+    }
+
+    @Test
+    public void shouldFieldBeString_WhenSizeIs3() {
+        Field field = new Field(3);
+        assertEquals(field.toString(),"∙∙∙\n∙∙∙\n∙∙∙\n" );
+    }
+
+    @Test
+    public void shouldFieldBeString_WhenSizeIs4() {
+        Field field = new Field(4);
+        assertEquals(field.toString(),"∙∙∙∙\n∙∙∙∙\n∙∙∙∙\n∙∙∙∙\n" );
+    }
+
+
 
     // Players take turns
     // Dots can be 2 types = from 2 players

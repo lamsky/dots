@@ -35,4 +35,16 @@ public class Field {
     private int xyToIndex(int x, int y) {
         return (y*size + x);
     }
+
+    @Override
+    public String toString() {
+        String result = "";
+        for (int index = 0; index < size * size; index ++) {
+            result += "∙";
+            if (index%size == size -1) {
+                result += "\n";
+            }
+        }
+        return result;
+    }
 }
