@@ -4,14 +4,14 @@ public class Field {
     // ∙◯◉─│╱╲
 
     private int size;
-    Dot[] dots;
+    Dot[][] dots;
 
     public Field(int size) {
         if (size <= 0) {
             throw new IllegalArgumentException();
         }
         this.size = size;
-        dots = new Dot[size * size];
+        dots = new Dot[size][size];
     }
 
     public int getSize() {
@@ -19,36 +19,32 @@ public class Field {
     }
 
     public void placeDot(int x, int y, Dot dot) {
-        if((x >= size) || (x < 0) || (y >= size) || (y < 0)) {
+        if ((x >= size) || (x < 0) || (y >= size) || (y < 0)) {
             throw new IllegalArgumentException();
         }
-        if( dots[xyToIndex(x, y)] != null) {
+        if (dots[x][y] != null) {
             throw new IllegalArgumentException();
         }
-        dots[xyToIndex(x, y)] = dot;
+        dots[x][y] = dot;
     }
 
     public boolean isFree(int x, int y) {
-        return (dots[xyToIndex(x, y)] == null);
-    }
-
-    private int xyToIndex(int x, int y) {
-        return (y*size + x);
+        return (dots[x][y] == null);
     }
 
     @Override
     public String toString() {
-        String result = "";
-        for (int index = 0; index < size * size; index ++) {
-            if (dots[index] == null) {
-                result += "∙";
-            } else {
-                result += dots[index].toString();
+        StringBuilder builder = new StringBuilder();
+        for (int x = 0; x < size; x++) {
+            for (int y = 0; y < size; y++) {
+                if (dots[x][y] == null) {
+                    builder.append("∙");
+                } else {
+                    builder.append(dots[x][y].toString());
+                }
             }
-            if (index%size == size -1) {
-                result += "\n";
-            }
+            builder.append("\n");
         }
-        return result;
+        return builder.toString();
     }
 }
