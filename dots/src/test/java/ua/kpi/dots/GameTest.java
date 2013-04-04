@@ -66,18 +66,6 @@ public class GameTest {
     }
 
     // Dots can be placed on the field
-    @Test
-    public void shouldPutDotInFreeCellWhenPrompted() {
-        assertPlacingDotInFreeCell(1, 1, new Dot());
-    }
-
-    private void assertPlacingDotInFreeCell(int x, int y, Dot dot) {
-        Field field = game.getField();
-        assertTrue("cell must be free", field.isFree(x, y));
-        field.placeDot(x, y, dot);
-        assertFalse("cell mustn't be free after dot's been placed", field.isFree(x, y));
-    }
-
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowException_WhenXLargerThanSize() {
         Field field = game.getField();
@@ -110,7 +98,7 @@ public class GameTest {
     public void shouldBusyCell_WhenDotPlacedInCell() {
         Field field = game.getField();
         field.placeDot(1, 1, new Dot());
-        assertEquals(false, field.isFree(1, 1));
+        assertFalse(field.isFree(1, 1));
     }
 
     @Test(expected = IllegalArgumentException.class)
