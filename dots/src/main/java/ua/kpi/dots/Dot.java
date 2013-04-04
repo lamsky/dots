@@ -17,6 +17,6 @@ public class Dot {
 
     @Override
     public String toString() {
-        return label + "";
+        return String.valueOf(label);
     }
 }

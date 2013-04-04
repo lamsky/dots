@@ -5,9 +5,6 @@ public class Field {
     public static char EMPTY_CELL = '∙';
     public static char EMPTY_LINE_PLACE = ' ';
 
-
-
-
     private int size;
     Dot[][] dots;
 
@@ -52,13 +49,13 @@ public class Field {
     private String buildLine(int row) {
         StringBuilder line = new StringBuilder();
         for (int column = 0; column < size*2 - 1; column++) {
-            line.append(selectSymbol(column, row));
+            line.append(selectDotsSymbol(column, row));
         }
         line.append("\n");
         return line.toString();
     }
 
-    private String selectSymbol(int column, int row) {
+    private String selectDotsSymbol(int column, int row) {
         if(column%2 == 0 && row%2 == 0) {
             int x = column/2;
             int y = row/2;

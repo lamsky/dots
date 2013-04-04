@@ -135,16 +135,16 @@ public class FieldTest {
         Field field = new Field(5);
         Dot dotB = new Dot(Player.PLAYER_SET_0[0]);
         Dot dotR = new Dot(Player.PLAYER_SET_1[0]);
-        field.placeDot(1, 1, dotB);
-        field.placeDot(3, 3, dotR);
+        field.placeDot(1, 2, dotB);
+        field.placeDot(2, 3, dotR);
         assertEquals(field.toString(),
                 "∙ ∙ ∙ ∙ ∙\n"
               + "         \n"
-              + "∙ ◯ ∙ ∙ ∙\n"
-              + "         \n"
               + "∙ ∙ ∙ ∙ ∙\n"
               + "         \n"
-              + "∙ ∙ ∙ ● ∙\n"
+              + "∙ ◯ ∙ ∙ ∙\n"
+              + "         \n"
+              + "∙ ∙ ● ∙ ∙\n"
               + "         \n"
               + "∙ ∙ ∙ ∙ ∙\n");
     }
@@ -158,7 +158,7 @@ public class FieldTest {
     public void shouldAvailableMoves_WhenAllDotsPlaced() {
         Field field = new Field(1);
         field.placeDot(0, 0, new Dot(Player.PLAYER_SET_0[0]));
-        assertTrue(!field.isAvailableMove());
+        assertFalse(field.isAvailableMove());
     }
 
 
