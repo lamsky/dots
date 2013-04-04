@@ -7,12 +7,10 @@ import static org.junit.Assert.*;
 
 public class GameTest {
     private Game game;
-    private Field field;
 
     @Before
     public void init() {
-        field = new Field(10);
-        game = new Game(field, new Player(), new Player());
+        game = new Game(new Field(10), new Player(), new Player());
     }
 
     // We have a field
@@ -40,7 +38,7 @@ public class GameTest {
 
     @Test
     public void shouldFieldBeEmpty_WhenCreated() {
-        assertFreeField(field);
+        assertFreeField(game.getField());
     }
 
     private void assertFreeField(Field field) {
@@ -70,41 +68,48 @@ public class GameTest {
     // Dots can be placed on the field
     @Test
     public void shouldPutDotOnField() {
+        Field field = game.getField();
         field.placeDot(1, 1, new Dot());
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowException_WhenXLargerThanSize() {
+        Field field = game.getField();
         int x = field.getSize();
         field.placeDot(x, 1, new Dot());
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowException_WhenXNegative() {
+        Field field = game.getField();
         int x = -1;
         field.placeDot(x, 1, new Dot());
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowException_WhenYLargerThanSize() {
+        Field field = game.getField();
         int y = field.getSize();
         field.placeDot(1, y, new Dot());
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowException_WhenYNegative() {
+        Field field = game.getField();
         int y = -1;
         field.placeDot(1, y, new Dot());
     }
 
     @Test
     public void shouldBusyCell_WhenDotPlacedInCell() {
+        Field field = game.getField();
         field.placeDot(1, 1, new Dot());
         assertEquals(false, field.isFree(1, 1));
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowException_WhenPlacedDotInBusyCell() {
+        Field field = game.getField();
         field.placeDot(0, 0, new Dot());
         field.placeDot(0, 0, new Dot());
     }
