@@ -1,7 +1,5 @@
 package ua.kpi.dots;
 
-import java.awt.*;
-
 public class Game {
     private Field field;
 
@@ -27,16 +25,14 @@ public class Game {
     }
 
     public void doMove(Player player) {
-        Point p = player.placeDot(field.toString());
-        field.placeDot(p.x, p.y, player.getDot());
+        PlayerMessage message = player.placeDot(field.toString());
+        field.placeDot(message.getX(), message.getY(), player.getDot());
     }
 
     public void run() {
-        while (field.isEvailableMove()) {
-            Point p = red.placeDot(field.toString());
-            field.placeDot(p.x, p.y, red.getDot());
-            p = blue.placeDot(field.toString());
-            field.placeDot(p.x, p.y, blue.getDot());
+        while (field.isAvailableMove()) {
+            doMove(red);
+            doMove(blue);
         }
     }
 

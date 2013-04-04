@@ -1,7 +1,5 @@
 package ua.kpi.dots;
 
-import java.awt.*;
-
 public class Player {
     public static char[] PLAYER_SET_0 = {'◯', '─', '│', '╲', '╱'};
     public static char[] PLAYER_SET_1 = {'●', '━', '┃', '▚', '▞'};
@@ -12,8 +10,8 @@ public class Player {
         this.charSet = charSet;
     }
 
-    public Point placeDot(String field) {
-        return new Point(0, 0);
+    public PlayerMessage placeDot(String field) {
+        return new PlayerMessage(0, 0);
     }
 
     public Dot getDot() {

@@ -151,14 +151,14 @@ public class FieldTest {
 
     @Test
     public void shouldCheckerAvailableMoves_WhenFieldCreated() {
-        assertTrue(field.isEvailableMove());
+        assertTrue(field.isAvailableMove());
     }
 
     @Test
     public void shouldAvailableMoves_WhenAllDotsPlaced() {
         Field field = new Field(1);
         field.placeDot(0, 0, new Dot(Player.PLAYER_SET_0[0]));
-        assertTrue(!field.isEvailableMove());
+        assertTrue(!field.isAvailableMove());
     }
 
 

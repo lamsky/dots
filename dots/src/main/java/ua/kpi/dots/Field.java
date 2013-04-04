@@ -71,9 +71,9 @@ public class Field {
         return String.valueOf(EMPTY_LINE_PLACE); // Place for lines
     }
 
-    public boolean isEvailableMove() {
-        for (Dot[] dotx : dots) {
-            for (Dot dot : dotx) {
+    public boolean isAvailableMove() {
+        for (Dot[] dotRow : dots) {
+            for (Dot dot : dotRow) {
                 if (dot == null) {
                     return true;
                 }
