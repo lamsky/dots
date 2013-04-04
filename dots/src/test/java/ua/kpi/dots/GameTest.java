@@ -11,14 +11,14 @@ public class GameTest {
 
     @Before
     public void init() {
-        game = new Game(new Player(), new Player());
         field = new Field(10);
+        game = new Game(field, new Player(), new Player());
     }
 
     // We have a field
     @Test
     public void shouldExistField_WhenGameCreated() {
-        new Field(1);
+        assertNotNull(game.getField());
     }
 
     // Field has some size

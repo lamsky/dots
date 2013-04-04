@@ -1,10 +1,13 @@
 package ua.kpi.dots;
 
 public class Game {
-    Player red;
-    Player blue;
+    private Field field;
 
-    public Game(Player red, Player blue) {
+    private Player red;
+    private Player blue;
+
+    public Game(Field field, Player red, Player blue) {
+        this.field = field;
         this.red = red;
         this.blue = blue;
     }
@@ -15,5 +18,9 @@ public class Game {
 
     public Player getBluePlayer() {
         return blue;
+    }
+
+    public Field getField() {
+        return field;
     }
 }
