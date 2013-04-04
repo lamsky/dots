@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class DotsTest {
+public class GameTest {
     private Game game;
     private Field field;
 
@@ -40,7 +40,6 @@ public class DotsTest {
 
     @Test
     public void shouldFieldBeEmpty_WhenCreated() {
-        Field field = new Field(3);
         assertFreeField(field);
     }
 
@@ -76,7 +75,7 @@ public class DotsTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowException_WhenXLargerThanSize() {
-        int x = field.getSize() + 1;
+        int x = field.getSize();
         field.placeDot(x, 1, new Dot());
     }
 
@@ -88,7 +87,7 @@ public class DotsTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowException_WhenYLargerThanSize() {
-        int y = field.getSize() + 1;
+        int y = field.getSize();
         field.placeDot(1, y, new Dot());
     }
 
@@ -119,19 +118,34 @@ public class DotsTest {
     @Test
     public void shouldFieldBeString_WhenSizeIs2() {
         Field field = new Field(2);
-        assertEquals(field.toString(),"∙∙\n∙∙\n" );
+        assertEquals(field.toString(),
+                "∙ ∙\n"
+              + "   \n"
+              + "∙ ∙\n" );
     }
 
     @Test
     public void shouldFieldBeString_WhenSizeIs3() {
         Field field = new Field(3);
-        assertEquals(field.toString(),"∙∙∙\n∙∙∙\n∙∙∙\n" );
+        assertEquals(field.toString(),
+                "∙ ∙ ∙\n"
+              + "     \n"
+              + "∙ ∙ ∙\n"
+              + "     \n"
+              + "∙ ∙ ∙\n" );
     }
 
     @Test
     public void shouldFieldBeString_WhenSizeIs4() {
         Field field = new Field(4);
-        assertEquals(field.toString(),"∙∙∙∙\n∙∙∙∙\n∙∙∙∙\n∙∙∙∙\n" );
+        assertEquals(field.toString(),
+                "∙ ∙ ∙ ∙\n"
+              + "       \n"
+              + "∙ ∙ ∙ ∙\n"
+              + "       \n"
+              + "∙ ∙ ∙ ∙\n"
+              + "       \n"
+              + "∙ ∙ ∙ ∙\n" );
     }
 
     @Test
@@ -148,37 +162,44 @@ public class DotsTest {
 
     @Test
     public void shouldSetDotLabelSymbol2() {
-        Dot dot = new Dot('◉');
-        assertEquals(dot.toString(), "◉");
+        Dot dot = new Dot('●');
+        assertEquals(dot.toString(), "●");
     }
 
     @Test
     public void shouldBeDisplayedDots_whenPlacedOnField4() {
         Field field = new Field(4);
         Dot dotB = new Dot('◯');
-        Dot dotR = new Dot('◉');
+        Dot dotR = new Dot('●');
         field.placeDot(1, 1, dotB);
         field.placeDot(2, 2, dotR);
         assertEquals(
-                "∙∙∙∙\n"
-              + "∙◯∙∙\n"
-              + "∙∙◉∙\n"
-              + "∙∙∙∙\n", field.toString());
+                "∙ ∙ ∙ ∙\n"
+              + "       \n"
+              + "∙ ◯ ∙ ∙\n"
+              + "       \n"
+              + "∙ ∙ ● ∙\n"
+              + "       \n"
+              + "∙ ∙ ∙ ∙\n", field.toString());
     }
 
     @Test
     public void shouldBeDisplayedDots_whenPlacedOnField5() {
         Field field = new Field(5);
         Dot dotB = new Dot('◯');
-        Dot dotR = new Dot('◉');
+        Dot dotR = new Dot('●');
         field.placeDot(1, 1, dotB);
         field.placeDot(3, 3, dotR);
         assertEquals(
-                "∙∙∙∙∙\n"
-              + "∙◯∙∙∙\n"
-              + "∙∙∙∙∙\n"
-              + "∙∙∙◉∙\n"
-              + "∙∙∙∙∙\n", field.toString());
+                "∙ ∙ ∙ ∙ ∙\n"
+              + "         \n"
+              + "∙ ◯ ∙ ∙ ∙\n"
+              + "         \n"
+              + "∙ ∙ ∙ ∙ ∙\n"
+              + "         \n"
+              + "∙ ∙ ∙ ● ∙\n"
+              + "         \n"
+              + "∙ ∙ ∙ ∙ ∙\n", field.toString());
     }
 
 

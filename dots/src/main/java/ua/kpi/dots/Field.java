@@ -38,6 +38,24 @@ public class Field {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
+        for (int j = 0; j < size*2 - 1; j++) {
+            for (int i = 0; i < size*2 - 1; i++) {
+                if(i%2 == 0 && j%2 == 0) {
+                    int x = i/2;
+                    int y = j/2;
+                    if (dots[x][y] == null) {
+                        builder.append('∙');
+                    } else {
+                        builder.append(dots[x][y].toString());
+                    }
+                } else {
+                    builder.append(' ');
+                }
+            }
+            builder.append("\n");
+        }
+        /*
+        StringBuilder builder = new StringBuilder();
         for (int x = 0; x < size; x++) {
             for (int y = 0; y < size; y++) {
                 if (dots[x][y] == null) {
@@ -48,6 +66,7 @@ public class Field {
             }
             builder.append("\n");
         }
+        //*/
         return builder.toString();
     }
 }
