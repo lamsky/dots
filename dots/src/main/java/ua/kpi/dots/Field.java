@@ -37,36 +37,32 @@ public class Field {
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder();
-        for (int j = 0; j < size*2 - 1; j++) {
-            for (int i = 0; i < size*2 - 1; i++) {
-                if(i%2 == 0 && j%2 == 0) {
-                    int x = i/2;
-                    int y = j/2;
-                    if (dots[x][y] == null) {
-                        builder.append('∙');
-                    } else {
-                        builder.append(dots[x][y].toString());
-                    }
-                } else {
-                    builder.append(' ');
-                }
-            }
-            builder.append("\n");
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int row = 0; row < size*2 - 1; row++) {
+            stringBuilder.append(buildLine(row));
         }
-        /*
-        StringBuilder builder = new StringBuilder();
-        for (int x = 0; x < size; x++) {
-            for (int y = 0; y < size; y++) {
-                if (dots[x][y] == null) {
-                    builder.append("∙");
-                } else {
-                    builder.append(dots[x][y].toString());
-                }
-            }
-            builder.append("\n");
+        return stringBuilder.toString();
+    }
+
+    private String buildLine(int row) {
+        StringBuilder line = new StringBuilder();
+        for (int column = 0; column < size*2 - 1; column++) {
+            line.append(selectSymbol(column, row));
         }
-        //*/
-        return builder.toString();
+        line.append("\n");
+        return line.toString();
+    }
+
+    private String selectSymbol(int column, int row) {
+        if(column%2 == 0 && row%2 == 0) {
+            int x = column/2;
+            int y = row/2;
+            if (dots[x][y] == null) {
+                return "∙";
+            } else {
+                return dots[x][y].toString();
+            }
+        }
+        return " "; // Place for lines
     }
 }

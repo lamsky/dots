@@ -9,7 +9,6 @@ public class Dot {
 
     public Dot(char label) {
         this.label = label;
-        //To change body of created methods use File | Settings | File Templates.
     }
 
     public Dot() {

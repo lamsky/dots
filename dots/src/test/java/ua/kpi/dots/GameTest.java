@@ -121,7 +121,7 @@ public class GameTest {
         assertEquals(field.toString(),
                 "∙ ∙\n"
               + "   \n"
-              + "∙ ∙\n" );
+              + "∙ ∙\n");
     }
 
     @Test
@@ -132,7 +132,7 @@ public class GameTest {
               + "     \n"
               + "∙ ∙ ∙\n"
               + "     \n"
-              + "∙ ∙ ∙\n" );
+              + "∙ ∙ ∙\n");
     }
 
     @Test
@@ -145,7 +145,7 @@ public class GameTest {
               + "       \n"
               + "∙ ∙ ∙ ∙\n"
               + "       \n"
-              + "∙ ∙ ∙ ∙\n" );
+              + "∙ ∙ ∙ ∙\n");
     }
 
     @Test
@@ -173,14 +173,14 @@ public class GameTest {
         Dot dotR = new Dot('●');
         field.placeDot(1, 1, dotB);
         field.placeDot(2, 2, dotR);
-        assertEquals(
+        assertEquals(field.toString(),
                 "∙ ∙ ∙ ∙\n"
               + "       \n"
               + "∙ ◯ ∙ ∙\n"
               + "       \n"
               + "∙ ∙ ● ∙\n"
               + "       \n"
-              + "∙ ∙ ∙ ∙\n", field.toString());
+              + "∙ ∙ ∙ ∙\n");
     }
 
     @Test
@@ -190,7 +190,7 @@ public class GameTest {
         Dot dotR = new Dot('●');
         field.placeDot(1, 1, dotB);
         field.placeDot(3, 3, dotR);
-        assertEquals(
+        assertEquals(field.toString(),
                 "∙ ∙ ∙ ∙ ∙\n"
               + "         \n"
               + "∙ ◯ ∙ ∙ ∙\n"
@@ -199,7 +199,7 @@ public class GameTest {
               + "         \n"
               + "∙ ∙ ∙ ● ∙\n"
               + "         \n"
-              + "∙ ∙ ∙ ∙ ∙\n", field.toString());
+              + "∙ ∙ ∙ ∙ ∙\n");
     }
 
 

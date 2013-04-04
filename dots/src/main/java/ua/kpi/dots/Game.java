@@ -7,7 +7,6 @@ public class Game {
     public Game(Player red, Player blue) {
         this.red = red;
         this.blue = blue;
-
     }
 
     public Player getRedPlayer() {
