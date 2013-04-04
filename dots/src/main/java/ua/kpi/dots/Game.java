@@ -30,8 +30,14 @@ public class Game {
     }
 
     public void run() {
-        while (field.isAvailableMove()) {
+        while (true) {
+            if (!field.isAvailableMove()) {
+                return;
+            }
             doMove(red);
+            if (!field.isAvailableMove()) {
+                return;
+            }
             doMove(blue);
         }
     }

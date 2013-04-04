@@ -52,6 +52,16 @@ public class GameTest {
         //TODO не знаю як точніше це перевірити
     }
 
+    @Test
+    public void shouldPlacePointInAllAvailableCell_WhenTwoRandomPlayers() {
+        Player red = new RandomPlayer(Player.PLAYER_SET_0);
+        Player blue = new RandomPlayer(Player.PLAYER_SET_1);
+        Game game = new Game(new Field(7), red, blue);
+        game.run();
+        String field = game.getField().toString();
+        assertEquals(-1, field.indexOf(Field.EMPTY_CELL));
+    }
+
     // Players take turns
     // Dots can be 2 types = from 2 players
     // When there is a loop, which consists of same type dots,
