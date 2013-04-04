@@ -116,8 +116,8 @@ public class FieldTest {
     @Test
     public void shouldBeDisplayedDots_whenPlacedOnField4() {
         Field field = new Field(4);
-        Dot dotB = new Dot('◯');
-        Dot dotR = new Dot('●');
+        Dot dotB = new Dot(Player.PLAYER_SET_0[0]);
+        Dot dotR = new Dot(Player.PLAYER_SET_1[0]);
         field.placeDot(1, 1, dotB);
         field.placeDot(2, 2, dotR);
         assertEquals(field.toString(),
@@ -133,8 +133,8 @@ public class FieldTest {
     @Test
     public void shouldBeDisplayedDots_whenPlacedOnField5() {
         Field field = new Field(5);
-        Dot dotB = new Dot('◯');
-        Dot dotR = new Dot('●');
+        Dot dotB = new Dot(Player.PLAYER_SET_0[0]);
+        Dot dotR = new Dot(Player.PLAYER_SET_1[0]);
         field.placeDot(1, 1, dotB);
         field.placeDot(3, 3, dotR);
         assertEquals(field.toString(),
@@ -157,7 +157,7 @@ public class FieldTest {
     @Test
     public void shouldAvailableMoves_WhenAllDotsPlaced() {
         Field field = new Field(1);
-        field.placeDot(0, 0, new Dot('◯'));
+        field.placeDot(0, 0, new Dot(Player.PLAYER_SET_0[0]));
         assertTrue(!field.isEvailableMove());
     }
 

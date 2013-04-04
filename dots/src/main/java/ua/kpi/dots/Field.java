@@ -2,6 +2,12 @@ package ua.kpi.dots;
 
 public class Field {
 
+    public static char EMPTY_CELL = '∙';
+    public static char EMPTY_LINE_PLACE = ' ';
+
+
+
+
     private int size;
     Dot[][] dots;
 
@@ -57,12 +63,12 @@ public class Field {
             int x = column/2;
             int y = row/2;
             if (dots[x][y] == null) {
-                return "∙";
+                return String.valueOf(EMPTY_CELL);
             } else {
                 return dots[x][y].toString();
             }
         }
-        return " "; // Place for lines
+        return String.valueOf(EMPTY_LINE_PLACE); // Place for lines
     }
 
     public boolean isEvailableMove() {

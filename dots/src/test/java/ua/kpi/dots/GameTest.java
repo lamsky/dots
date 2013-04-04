@@ -3,14 +3,22 @@ package ua.kpi.dots;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class GameTest {
     private Game game;
+    private Field field;
+    private Player red;
+    private Player blue;
+
 
     @Before
     public void init() {
-        game = new Game(new Field(10), new Player(), new Player());
+        red = new Player(Player.PLAYER_SET_0);
+        blue = new Player(Player.PLAYER_SET_1);
+        field = new Field(10);
+        game = new Game(field, red, blue);
     }
 
     // We have a field
@@ -28,6 +36,20 @@ public class GameTest {
     @Test
     public void shouldExistBluePlayer_WhenGameCreates() {
         assertNotNull(game.getBluePlayer());
+    }
+
+    @Test
+    public void shouldPlayerDoMove_WhenGameCreates() {
+        game = new Game(new Field(1), red, blue);
+        game.doMove(red);
+        assertEquals(game.getField().toString(),
+                Player.PLAYER_SET_0[0] + "\n");
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void shouldPlayersMoveInTurn() {
+        game.run();
+        //TODO не знаю як точніше це перевірити
     }
 
     // Players take turns
