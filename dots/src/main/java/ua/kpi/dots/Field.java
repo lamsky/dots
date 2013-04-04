@@ -1,7 +1,6 @@
 package ua.kpi.dots;
 
 public class Field {
-    // ∙◯◉─│╱╲
 
     private int size;
     Dot[][] dots;
@@ -64,5 +63,16 @@ public class Field {
             }
         }
         return " "; // Place for lines
+    }
+
+    public boolean isEvailableMove() {
+        for (Dot[] dotx : dots) {
+            for (Dot dot : dotx) {
+                if (dot == null) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

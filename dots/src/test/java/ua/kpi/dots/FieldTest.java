@@ -149,4 +149,17 @@ public class FieldTest {
               + "∙ ∙ ∙ ∙ ∙\n");
     }
 
+    @Test
+    public void shouldCheckerAvailableMoves_WhenFieldCreated() {
+        assertTrue(field.isEvailableMove());
+    }
+
+    @Test
+    public void shouldAvailableMoves_WhenAllDotsPlaced() {
+        Field field = new Field(1);
+        field.placeDot(0, 0, new Dot('◯'));
+        assertTrue(!field.isEvailableMove());
+    }
+
+
 }
