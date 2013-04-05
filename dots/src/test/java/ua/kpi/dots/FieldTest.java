@@ -47,37 +47,37 @@ public class FieldTest {
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowException_WhenXLargerThanSize() {
         int x = field.getSize();
-        field.placeDot(x, 1, new Dot());
+        field.placeDot(x, 1, new Dot('x'));
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowException_WhenXNegative() {
         int x = -1;
-        field.placeDot(x, 1, new Dot());
+        field.placeDot(x, 1, new Dot('x'));
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowException_WhenYLargerThanSize() {
         int y = field.getSize();
-        field.placeDot(1, y, new Dot());
+        field.placeDot(1, y, new Dot('x'));
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowException_WhenYNegative() {
         int y = -1;
-        field.placeDot(1, y, new Dot());
+        field.placeDot(1, y, new Dot('x'));
     }
 
     @Test
     public void shouldBusyCell_WhenDotPlacedInCell() {
-        field.placeDot(1, 1, new Dot());
+        field.placeDot(1, 1, new Dot('x'));
         assertFalse(field.isFree(1, 1));
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowException_WhenPlacedDotInBusyCell() {
-        field.placeDot(0, 0, new Dot());
-        field.placeDot(0, 0, new Dot());
+        field.placeDot(0, 0, new Dot('x'));
+        field.placeDot(0, 0, new Dot('x'));
     }
 
     @Test

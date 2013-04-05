@@ -11,10 +11,6 @@ public class Dot {
         this.label = label;
     }
 
-    public Dot() {
-        this('@');
-    }
-
     @Override
     public String toString() {
         return String.valueOf(label);
