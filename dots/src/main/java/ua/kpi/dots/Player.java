@@ -10,11 +10,11 @@ public class Player {
         this.charSet = charSet;
     }
 
-    public PlayerMessage placeDot(String field) {
-        return new PlayerMessage(0, 0);
+    public Dot placeDot(String field) {
+        return new Dot(0, 0, charSet[0]);
     }
 
-    public Dot getDot() {
-        return new Dot(charSet[0]);
+    public Dot getDot(int x, int y) {
+        return new Dot(x, y, charSet[0]);
     }
 }

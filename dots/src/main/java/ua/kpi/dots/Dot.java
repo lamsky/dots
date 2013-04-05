@@ -6,13 +6,27 @@ package ua.kpi.dots;
  */
 public class Dot {
     private char label;
+    private int x;
+    private int y;
 
-    public Dot(char label) {
+    public Dot(int x, int y, char label) {
         this.label = label;
     }
 
     @Override
     public String toString() {
         return String.valueOf(label);
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public char getLabel() {
+        return label;
     }
 }

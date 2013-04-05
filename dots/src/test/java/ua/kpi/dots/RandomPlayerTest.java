@@ -18,7 +18,7 @@ public class RandomPlayerTest {
                      + "◯ ◯ ∙\n"
                      + "     \n"
                      + "◯ ◯ ◯\n";
-        PlayerMessage message = randomPlayer.placeDot(field);
-        assertTrue(message.x == 2 && message.y == 1);
+        Dot dot = randomPlayer.placeDot(field);
+        assertTrue(dot.getX() == 2 && dot.getY() == 1);
     }
 }

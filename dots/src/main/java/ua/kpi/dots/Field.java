@@ -78,4 +78,17 @@ public class Field {
         }
         return false;
     }
+
+    public Dot[] findAccessiblyDots(Dot dot) {
+        Dot[] result = new Dot[8];
+        /* TODO написати пошук достуних точок в такому порядку:
+         *
+         * 1 0 7
+         * 2 ● 6
+         * 3 4 5
+         */
+
+
+        return result;
+    }
 }

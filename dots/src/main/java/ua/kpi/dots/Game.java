@@ -25,8 +25,8 @@ public class Game {
     }
 
     public void doMove(Player player) {
-        PlayerMessage message = player.placeDot(field.toString());
-        field.placeDot(message.getX(), message.getY(), player.getDot());
+        Dot dot = player.placeDot(field.toString());
+        field.placeDot(dot.getX(), dot.getY(), dot);
     }
 
     public void run() {

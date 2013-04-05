@@ -22,6 +22,6 @@ public class PlayerTest {
     @Test
     public void shouldPlayerReturnDot() {
         Player player = new Player(Player.PLAYER_SET_0);
-        assertNotNull(player.getDot());
+        assertNotNull(player.getDot(0, 0));
     }
 }

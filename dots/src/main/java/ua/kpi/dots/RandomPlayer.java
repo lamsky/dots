@@ -12,7 +12,7 @@ public class RandomPlayer extends Player {
     }
 
     @Override
-    public PlayerMessage placeDot(String field) {
+    public Dot placeDot(String field) {
         int size = (((int) Math.sqrt(field.length())) + 1) / 2;
         int x;
         int y;
@@ -20,6 +20,6 @@ public class RandomPlayer extends Player {
             x = (int) (Math.random() * size);
             y = (int) (Math.random() * size);
         } while (field.charAt(x * 2 + y * 2 * size * 2) != '∙');
-        return new PlayerMessage(x, y);
+        return getDot(x, y);
     }
 }
