@@ -1,7 +1,6 @@
 package ua.kpi.dots;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Field {
 
@@ -23,17 +22,17 @@ public class Field {
         return size;
     }
 
-    public Surround placeDot(int x, int y, Dot dot) {
+    public Capture placeDot(int x, int y, Dot dot) {
         if (isValidPosition(x, y)) {
             dots[x][y] = dot;
         } else {
             throw new IllegalArgumentException();
         }
-        //TODO write code for checking issue Surround
         return null;
     }
 
     private boolean isValidPosition(int x, int y) {
+        //TODO write code for check come in enemy capture
         return (x < size) && (x >= 0) && (y < size) && (y >= 0) && isFree(x, y);
     }
 
@@ -69,7 +68,7 @@ public class Field {
                 return dots[x][y].toString();
             }
         }
-        return String.valueOf(EMPTY_LINE_PLACE); //TODO Place code for displaying lines
+        return String.valueOf(EMPTY_LINE_PLACE); //TODO Place code for displaying lines of surrounds
     }
 
     public boolean isAvailableMove() {
@@ -84,41 +83,67 @@ public class Field {
     }
 
 
-    public ArrayList<Surround> findAllSurrounds(Dot dot) {
-        ArrayList<Surround> result = new ArrayList<Surround>();
+    public ArrayList<Capture> findAllSurrounds(Dot dot) {
+        ArrayList<Capture> result = new ArrayList<Capture>();
+        Capture capture = new Capture();
+        findSurroundsRecursively(dot, result, capture);
+        deleteSameSurround(result);
 
-        Surround surround = new Surround();
-
-
-        findSurrounds(dot, result, surround);
-        //TODO write body of function
+        //TODO Place function for removing empty surrounds
+        //TODO Place function for removing biggest surrounds with same imprisoned dots
         return result;
     }
 
-    private void findSurrounds(Dot dot, ArrayList<Surround> result, Surround surround) {
-        List<Dot> availableDots = findAvailableDots(dot);
+    private void findSurroundsRecursively(Dot dot, ArrayList<Capture> result,
+                                          Capture capture) {
+        ArrayList<Dot> availableDots = findAvailableDots(dot, capture);
         for(Dot currentDot : availableDots) {
             Barrier line = new Barrier(dot, currentDot);
-            if (surround.isOriginal(line)) {
-                switch (surround.addBarrier(line)) {
-                    case 1: result.add(surround.clone());
-                        surround.removeLastBarrier();
+            if (capture.isAvailable(line)) {
+                switch (capture.addBarrier(line)) {
+                    case 1:
+                        if (capture.size() > 3) {
+                            result.add(capture.clone());
+                        }
+                        capture.removeLastLine();
                         break;
-                    case -1: break;
-                    default: findSurrounds(currentDot, result, surround); // запустити саму себе
+                    case -1:
+                        break;
+                    default:
+                        findSurroundsRecursively(currentDot, result, capture);
+                }
+            }
+        }
+        if(capture.size() > 0) {
+            capture.removeLastLine();
+        }
+    }
+
+    private void deleteSameSurround(ArrayList<Capture> captures) {
+        if(captures.size() < 2) {
+            return;
+        }
+        for (int index = 0; index < captures.size(); index++) {
+            for (int nextIndex = index + 1; nextIndex < captures.size(); nextIndex++) {
+                if( captures.get(index).isSame(captures.get(nextIndex))) {
+                    captures.remove(nextIndex);
+                    nextIndex--;
                 }
             }
         }
     }
 
-    public List<Dot> findAvailableDots(Dot dot) {
+    public ArrayList<Dot> findAvailableDots(Dot dot, Capture capture) {
         ArrayList<Dot> result = new ArrayList<Dot>();
         int x = dot.getX() + 1;
         int y = dot.getY() - 1;
+
+
         for(int i = 0; i < 8; i++){
             x += delta(i + 6);
-            y += delta(i);if ((x < size) && (x >= 0) && (y < size) && (y >= 0) && dots[x][y] != null) {
-                if (dot.isSamePlayerDots(dots[x][y]) && availableLine(dot, dots[x][y])) {
+            y += delta(i);
+            if ((x < size) && (x >= 0) && (y < size) && (y >= 0) && (dots[x][y] != null)) {
+                if (dot.isSamePlayerDots(dots[x][y]) && availableLine(dot, dots[x][y]) && !capture.isUsedWithoutStartDot(dots[x][y])) {
                     result.add(dots[x][y]);
                 }
             }

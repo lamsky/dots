@@ -32,12 +32,14 @@ public class Barrier {
     }
 
     public boolean continuesLine(Barrier previousLine) {
-        return previousLine.dotB.equals(this.dotA);
+        return this.dotA.equals(previousLine.dotB);
     }
 
     public boolean isSame(Barrier line) {
-        return (this.dotA.equals(line.dotA) && this.dotB.equals(line.dotB))
-                || (this.dotA.equals(line.dotB) && this.dotB.equals(line.dotA));
+        Dot dotA1 = line.dotA;
+        Dot dotB1 = line.dotB;
+        return (dotA1.equals(dotA) && dotB1.equals(dotB))
+            || (dotA1.equals(dotB) && dotB1.equals(dotA));
     }
 
     public boolean contain(Dot dot) {

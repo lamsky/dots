@@ -3,6 +3,8 @@ package ua.kpi.dots;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 public class FieldTest {
@@ -170,9 +172,26 @@ public class FieldTest {
 
     @Test
     public void shouldFindAllSurrounds_WhenDotPlaced() {
-        field.findAllSurrounds(testDot);
+        field = new Field(3);
+        placeDotOnFieldFirstPlayer(0, 1);
+        placeDotOnFieldFirstPlayer(1, 0);
+        placeDotOnFieldFirstPlayer(1, 2);
+        placeDotOnFieldFirstPlayer(2, 1);
+        testDot = new Dot(0, 1, Player.PLAYER_SET_0[0]);
+        ArrayList<Capture> captures = field.findAllSurrounds(testDot);
+
+        Dot dotA = new Dot(0, 1, Player.PLAYER_SET_0[0]);
+        Dot dotB = new Dot(1, 0, Player.PLAYER_SET_0[0]);
+        Dot dotC = new Dot(2, 1, Player.PLAYER_SET_0[0]);
+        Dot dotD = new Dot(1, 2, Player.PLAYER_SET_0[0]);
+        Capture goodCapture = new Capture(new Barrier(dotA, dotB));
+        goodCapture.addBarrier(new Barrier(dotB, dotC));
+        goodCapture.addBarrier(new Barrier(dotC, dotD));
+        goodCapture.addBarrier(new Barrier(dotD, dotA));
+
+        Capture calculateCapture = captures.get(0);
+
+        assertTrue(goodCapture.isSame(calculateCapture));
+        assertEquals(captures.size(), 1);
     }
-
-    //TODO Write test for checking findAllSurrounds
-
 }
