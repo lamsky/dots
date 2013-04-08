@@ -8,35 +8,44 @@ import org.junit.Test;
  * @version v.   08.04.13
  */
 public class SurroundTest {
-    private Dot dotA;
-    private Dot dotB;
-    private Dot dotC;
-    private Dot dotD;
-    Barrier lineAB;
-    Surround surround;
+    private Barrier lineAB;
+    private Barrier lineBD;
+    private Barrier lineDC;
+    private Barrier lineCA;
+    private Barrier lineBA;
+    private Barrier lineCB;
+    private Surround surround;
 
     @Before
     public void init() {
-        dotA = new Dot(0, 0, 'x');
-        dotB = new Dot(1, 0, 'x');
-        dotC = new Dot(0, 1, 'x');
-        dotD = new Dot(1, 1, 'x');
+        Dot dotA = new Dot(0, 0, 'x');
+        Dot dotB = new Dot(1, 0, 'x');
+        Dot dotC = new Dot(0, 1, 'x');
+        Dot dotD = new Dot(1, 1, 'x');
         lineAB = new Barrier(dotA, dotB);
+        lineBD = new Barrier(dotB, dotD);
+        lineDC = new Barrier(dotD, dotC);
+        lineCA = new Barrier(dotC, dotA);
+        lineBA = new Barrier(dotB, dotA);
+        lineCB = new Barrier(dotC, dotB);
+
         surround = new Surround(lineAB);
     }
 
     @Test
     public void shouldAddLinesToSurround_whenSurroundCreated() {
-        surround.addBarrier(new Barrier(dotB, dotC));
+        surround.addBarrier(lineBD);
     }
 
     @Test (expected = IllegalArgumentException.class)
     public void shouldThrowException_WhenAddBadLine() {
-        surround.addBarrier(new Barrier(dotC, dotD));
+        surround.addBarrier(lineDC);
     }
 
     @Test (expected = IllegalArgumentException.class)
     public void shouldThrowException_WhenAddSameLine() {
-        surround.addBarrier(new Barrier(dotB, dotA));
+        surround.addBarrier(lineBA);
     }
+
+
 }
