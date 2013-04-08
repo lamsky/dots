@@ -61,7 +61,6 @@ public class Capture {
                 return true;
             }
         }
-
         return false;
     }
 

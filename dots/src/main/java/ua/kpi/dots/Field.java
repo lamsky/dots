@@ -68,11 +68,13 @@ public class Field {
                 return dots[x][y].toString();
             }
         }
-        //TODO Relace "EMPTY_LINE_PLACE" whith code for displaying lines of surrounds
+        //TODO Replace "EMPTY_LINE_PLACE" with code for displaying lines of surrounds
         return String.valueOf(EMPTY_LINE_PLACE);
     }
 
     public boolean isAvailableMove() {
+
+        //TODO
         for (Dot[] dotRow : dots) {
             for (Dot dot : dotRow) {
                 if (dot == null) {
@@ -134,12 +136,12 @@ public class Field {
         }
     }
 
-    public ArrayList<Dot> findAvailableDots(Dot dot, Capture capture) {
+    private ArrayList<Dot> findAvailableDots(Dot dot, Capture capture) {
         ArrayList<Dot> result = new ArrayList<Dot>();
+        // converts "i" int dots coordinates, starting from from the top dot,
+        // counterclockwise
         int x = dot.getX() + 1;
         int y = dot.getY() - 1;
-
-
         for(int i = 0; i < 8; i++){
             x += delta(i + 6);
             y += delta(i);
@@ -152,10 +154,6 @@ public class Field {
         return result;
     }
 
-    /*
-     *  Функція, що перетворює 0, 1, 2, 3, 4 ...
-     *                       в 0, 0, 1, 1, 0, 0, -1, -1, 0, 0, 1, 1 ...
-     */
     private int delta(int index) {
         return ((index / 2) % 2) * (1 - ((index / 4) % 2) * 2);
     }
