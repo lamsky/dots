@@ -49,45 +49,39 @@ public class FieldTest {
 
     // Dots can be placed on the field
     @Test(expected = IllegalArgumentException.class)
-    public void shouldThrowException_WhenXLargerThanSize() {
-        int x = field.getSize();
-        Dot dot = new Dot(x, 1, 'x');
-
-        field.placeDot(dot.getX(), dot.getY(), dot);
+    public void shouldThrowException_WhenXEqualOrLargerThanSize() {
+        placeDotOnField(field.getSize(), 0);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowException_WhenXNegative() {
-        int x = -1;
-        Dot dot = new Dot(x, 1, 'x');
-        field.placeDot(dot.getX(), dot.getY(), dot);
+        placeDotOnField(-1, 0);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void shouldThrowException_WhenYLargerThanSize() {
-        int y = field.getSize();
-        Dot dot = new Dot(1, y, 'x');
-        field.placeDot(dot.getX(), dot.getY(), dot);
+    public void shouldThrowException_WhenYEqualOrLargerThanSize() {
+        placeDotOnField(0, field.getSize());
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowException_WhenYNegative() {
-        int y = -1;
-        Dot dot = new Dot(1, y, 'x');
-        field.placeDot(dot.getX(), dot.getY(), dot);
+        placeDotOnField(0, -1);
     }
 
     @Test
     public void shouldBusyCell_WhenDotPlacedInCell() {
-        Dot dot = new Dot(1, 1, 'x');
-        field.placeDot(dot.getX(), dot.getY(), dot);
+        placeDotOnField(1, 1);
         assertFalse(field.isFree(1, 1));
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowException_WhenPlacedDotInBusyCell() {
-        Dot dot = new Dot(1, 1, 'x');
-        field.placeDot(dot.getX(), dot.getY(), dot);
+        placeDotOnField(0, 0);
+        placeDotOnField(0, 0);
+    }
+
+    private void placeDotOnField(int x, int y) {
+        Dot dot = new Dot(x, y, Player.PLAYER_SET_0[0]);
         field.placeDot(dot.getX(), dot.getY(), dot);
     }
 
@@ -126,12 +120,12 @@ public class FieldTest {
 
     @Test
     public void shouldBeDisplayedDots_whenPlacedOnField4() {
-        Field field1 = new Field(4);
+        Field field = new Field(4);
         Dot dotB = new Dot(1, 1, Player.PLAYER_SET_0[0]);
         Dot dotR = new Dot(2, 2, Player.PLAYER_SET_1[0]);
-        field1.placeDot(dotB.getX(), dotB.getY(), dotB);
-        field1.placeDot(dotR.getX(), dotR.getY(), dotR);
-        assertEquals(field1.toString(),
+        field.placeDot(dotB.getX(), dotB.getY(), dotB);
+        field.placeDot(dotR.getX(), dotR.getY(), dotR);
+        assertEquals(field.toString(),
                 "∙ ∙ ∙ ∙\n"
               + "       \n"
               + "∙ ◯ ∙ ∙\n"
