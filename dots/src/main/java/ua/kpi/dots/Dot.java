@@ -20,15 +20,28 @@ public class Dot {
         return String.valueOf(label);
     }
 
+    @Override
+    public int hashCode() {
+        return x + y + label;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if((obj == null) || (obj.getClass() != this.getClass())) {
+            return false;
+        }
+
+        Dot currentDot = (Dot) obj;
+        return (   this.x == currentDot.x
+                && this.y == currentDot.y
+                && this.label == currentDot.label);
+    }
+
     public int getX() {
         return x;
     }
 
     public int getY() {
         return y;
-    }
-
-    public char getLabel() {
-        return label;
     }
 }

@@ -174,5 +174,4 @@ public class FieldTest {
     public void shouldFindAllSurrounds_WhenDotPlaced() {
         List<Surround> surrounds = field.findAllSurrounds(testDot);
     }
-
 }
