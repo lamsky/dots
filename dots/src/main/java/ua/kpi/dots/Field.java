@@ -1,5 +1,6 @@
 package ua.kpi.dots;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Field {
@@ -83,6 +84,9 @@ public class Field {
 
 
     public List<Surround> findAllSurrounds(Dot dot) {
-        return null;  //To change body of created methods use File | Settings | File Templates.
+        ArrayList<Surround> result = new ArrayList<Surround>();
+
+        //TODO write body of function
+        return result;
     }
 }

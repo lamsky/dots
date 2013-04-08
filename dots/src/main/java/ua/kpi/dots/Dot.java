@@ -20,6 +20,22 @@ public class Dot {
         return String.valueOf(label);
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public boolean isSamePlayerDots(Dot dot) {
+        return this.label == dot.label;
+    }
+
+    public boolean isDifferentCoordinates(Dot dot) {
+        return !((this.x == dot.x) && (this.y == dot.y));
+    }
+
     @Override
     public int hashCode() {
         return x + y + label;
@@ -32,16 +48,8 @@ public class Dot {
         }
 
         Dot currentDot = (Dot) obj;
-        return (   this.x == currentDot.x
-                && this.y == currentDot.y
-                && this.label == currentDot.label);
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
+        return (   (this.x == currentDot.x)
+                && (this.y == currentDot.y)
+                && (this.label == currentDot.label));
     }
 }

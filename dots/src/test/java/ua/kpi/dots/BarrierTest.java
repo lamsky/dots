@@ -22,6 +22,13 @@ public class BarrierTest {
     }
 
     @Test (expected = IllegalArgumentException.class)
+    public void shouldThrowException_WhenDifferentPlayerDots() {
+        Dot dotA = new Dot(0, 0, 'x');
+        Dot dotB = new Dot(1, 1, 'y');
+        new Barrier(dotA, dotB);
+    }
+
+    @Test (expected = IllegalArgumentException.class)
     public void shouldThrowException_WhenCreateBarrierFromSameDots() {
         Dot dotA = new Dot(0, 0, 'x');
         Dot dotB = new Dot(0, 0, 'x');

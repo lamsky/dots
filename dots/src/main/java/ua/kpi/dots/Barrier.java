@@ -8,13 +8,26 @@ public class Barrier {
     private Dot dotA;
     private Dot dotB;
     public Barrier(Dot dotA, Dot dotB) {
-        if ((Math.abs(dotA.getX() - dotB.getX()) > 1)
-                || (Math.abs(dotA.getY() - dotB.getY()) > 1)
-                || (dotA.equals(dotB))) {
+        if (!isCorrectDistance(dotA, dotB)
+                || !dotA.isSamePlayerDots(dotB)
+                || !dotA.isDifferentCoordinates(dotB)){
             throw new IllegalArgumentException();
         }
-
         this.dotA = dotA;
         this.dotB = dotB;
+    }
+
+    private boolean isCorrectDistance(Dot dotA, Dot dotB) {
+        return (Math.abs(dotA.getX() - dotB.getX()) < 2)
+                && (Math.abs(dotA.getY() - dotB.getY()) < 2);
+    }
+
+    public boolean continuesLine(Barrier previousLine) {
+        return previousLine.dotB.equals(this.dotA);
+    }
+
+    public boolean isSame(Barrier line) {
+        return (this.dotA.equals(line.dotA) && this.dotB.equals(line.dotB))
+                || (this.dotA.equals(line.dotB) && this.dotB.equals(line.dotA));
     }
 }
