@@ -11,6 +11,8 @@ public class Dot {
 
     public Dot(int x, int y, char label) {
         this.label = label;
+        this.x = x;
+        this.y = y;
     }
 
     @Override

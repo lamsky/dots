@@ -1,5 +1,7 @@
 package ua.kpi.dots;
 
+import java.util.List;
+
 public class Field {
 
     public static char EMPTY_CELL = '∙';
@@ -79,16 +81,8 @@ public class Field {
         return false;
     }
 
-    public Dot[] findAccessiblyDots(Dot dot) {
-        Dot[] result = new Dot[8];
-        /* TODO написати пошук достуних точок в такому порядку:
-         *
-         * 1 0 7
-         * 2 ● 6
-         * 3 4 5
-         */
 
-
-        return result;
+    public List<Surround> findAllSurrounds(Dot dot) {
+        return null;  //To change body of created methods use File | Settings | File Templates.
     }
 }

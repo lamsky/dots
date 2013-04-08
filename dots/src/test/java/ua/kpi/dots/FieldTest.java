@@ -3,14 +3,18 @@ package ua.kpi.dots;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class FieldTest {
     private Field field;
+    private Dot testDot;
 
     @Before
     public void init() {
         field = new Field(10);
+        testDot = new Dot(0, 0, Player.PLAYER_SET_0[0]);
     }
 
     // Field has some size
@@ -122,12 +126,12 @@ public class FieldTest {
 
     @Test
     public void shouldBeDisplayedDots_whenPlacedOnField4() {
-        Field field = new Field(4);
+        Field field1 = new Field(4);
         Dot dotB = new Dot(1, 1, Player.PLAYER_SET_0[0]);
         Dot dotR = new Dot(2, 2, Player.PLAYER_SET_1[0]);
-        field.placeDot(dotB.getX(), dotB.getY(), dotB);
-        field.placeDot(dotR.getX(), dotR.getY(), dotR);
-        assertEquals(field.toString(),
+        field1.placeDot(dotB.getX(), dotB.getY(), dotB);
+        field1.placeDot(dotR.getX(), dotR.getY(), dotR);
+        assertEquals(field1.toString(),
                 "∙ ∙ ∙ ∙\n"
               + "       \n"
               + "∙ ◯ ∙ ∙\n"
@@ -170,5 +174,9 @@ public class FieldTest {
         assertFalse(field.isAvailableMove());
     }
 
+    @Test
+    public void shouldFindAllSurrounds_WhenDotPlaced() {
+        List<Surround> surrounds = field.findAllSurrounds(testDot);
+    }
 
 }
