@@ -52,4 +52,9 @@ public class Dot {
                 && (this.y == currentDot.y)
                 && (this.label == currentDot.label));
     }
+
+    @Override
+    protected Dot clone() {
+        return new Dot(x, y, label);
+    }
 }

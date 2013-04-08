@@ -3,6 +3,8 @@ package ua.kpi.dots;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 /**
  * @author Myhaylo Kotsyuruba
  * @version v.   08.04.13
@@ -45,6 +47,20 @@ public class SurroundTest {
     @Test (expected = IllegalArgumentException.class)
     public void shouldThrowException_WhenAddSameLine() {
         surround.addBarrier(lineBA);
+    }
+
+    @Test
+    public void shouldSurroundDetectedChicle_whenAddLine(){
+        surround.addBarrier(lineBD);
+        surround.addBarrier(lineDC);
+        assertEquals(-1, surround.addBarrier(lineCB));
+    }
+
+    @Test
+    public void shouldSurroundDetectedChicleFromStart_whenAddLine(){
+        surround.addBarrier(lineBD);
+        surround.addBarrier(lineDC);
+        assertEquals(1, surround.addBarrier(lineCA));
     }
 
 

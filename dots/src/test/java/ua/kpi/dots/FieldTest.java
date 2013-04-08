@@ -3,8 +3,6 @@ package ua.kpi.dots;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.List;
-
 import static org.junit.Assert.*;
 
 public class FieldTest {
@@ -172,6 +170,6 @@ public class FieldTest {
 
     @Test
     public void shouldFindAllSurrounds_WhenDotPlaced() {
-        List<Surround> surrounds = field.findAllSurrounds(testDot);
+        field.findAllSurrounds(testDot);
     }
 }
