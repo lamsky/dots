@@ -7,14 +7,28 @@ import java.util.ArrayList;
  * @version v.   08.04.13
  */
 public class Surround {
-    ArrayList<Barrier> lines;
+    private ArrayList<Barrier> lines;
 
     public Surround(Barrier line) {
+        this();
+        addBarrier(line);
+        //lines.add(line);
+    }
+
+    public Surround() {
         lines = new ArrayList<Barrier>();
-        lines.add(line);
     }
 
     public int addBarrier(Barrier line) {
+        if (line == null) {
+            throw new IllegalArgumentException();
+        }
+
+        if(lines.size() == 0) {
+            lines.add(line);
+            return 0;
+        }
+
         Barrier lastLine = lines.get(lines.size() - 1);
         if (!line.continuesLine(lastLine) || !isOriginal(line)) {
             throw new IllegalArgumentException();
@@ -54,5 +68,18 @@ public class Surround {
             }
         }
         return true;
+    }
+
+    @Override
+    public Surround clone()  {
+        Surround result = new Surround(lines.get(0).clone());
+        for (int index = 1; index < lines.size(); index++) {
+            result.lines.add(this.lines.get(index).clone());
+        }
+        return result;
+    }
+
+    public void removeLastBarrier() {
+        lines.remove(lines.size() - 1);
     }
 }

@@ -172,4 +172,7 @@ public class FieldTest {
     public void shouldFindAllSurrounds_WhenDotPlaced() {
         field.findAllSurrounds(testDot);
     }
+
+    //TODO Write test for checking findAllSurrounds
+
 }
