@@ -7,24 +7,33 @@ package ua.kpi.dots;
 public class Barrier {
     private Dot dotA;
     private Dot dotB;
+
     public Barrier(Dot dotA, Dot dotB) {
-        if (!isCorrectDistance(dotA, dotB)
-                || !dotA.isSamePlayerDots(dotB)
+        checkDots(dotA, dotB);
+        this.dotA = dotA;
+        this.dotB = dotB;
+    }
+
+    private void checkDots(Dot dotA, Dot dotB) {
+        if (!isCorrectDistance(dotA, dotB) || !dotA.isSamePlayerDots(dotB)
                 || !dotA.isDifferentCoordinates(dotB)){
             throw new IllegalArgumentException();
         }
-        this.dotA = dotA;
-        this.dotB = dotB;
+    }
+
+    @Override
+    public Barrier clone() {
+        return new Barrier(dotA.clone(), dotB.clone());
     }
 
     public Dot getDotA() {
         return dotA.clone();
     }
 
+
     public Dot getDotB() {
         return dotB.clone();
     }
-
 
     private boolean isCorrectDistance(Dot dotA, Dot dotB) {
         return (Math.abs(dotA.getX() - dotB.getX()) < 2)
@@ -44,10 +53,5 @@ public class Barrier {
 
     public boolean contain(Dot dot) {
         return (dotA.equals(dot) || dotB.equals(dot));
-    }
-
-    @Override
-    public Barrier clone() {
-        return new Barrier(dotA.clone(), dotB.clone());
     }
 }

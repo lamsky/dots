@@ -20,22 +20,6 @@ public class Dot {
         return String.valueOf(label);
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public boolean isSamePlayerDots(Dot dot) {
-        return this.label == dot.label;
-    }
-
-    public boolean isDifferentCoordinates(Dot dot) {
-        return !((this.x == dot.x) && (this.y == dot.y));
-    }
-
     @Override
     public int hashCode() {
         return x + y + label;
@@ -54,7 +38,23 @@ public class Dot {
     }
 
     @Override
-    protected Dot clone() {
+    public Dot clone() {
         return new Dot(x, y, label);
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public boolean isSamePlayerDots(Dot dot) {
+        return this.label == dot.label;
+    }
+
+    public boolean isDifferentCoordinates(Dot dot) {
+        return !((this.x == dot.x) && (this.y == dot.y));
     }
 }

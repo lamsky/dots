@@ -68,7 +68,8 @@ public class Field {
                 return dots[x][y].toString();
             }
         }
-        return String.valueOf(EMPTY_LINE_PLACE); //TODO Place code for displaying lines of surrounds
+        //TODO Relace "EMPTY_LINE_PLACE" whith code for displaying lines of surrounds
+        return String.valueOf(EMPTY_LINE_PLACE);
     }
 
     public boolean isAvailableMove() {
