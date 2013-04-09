@@ -68,7 +68,7 @@ public class Field {
                 return dots[x][y].toString();
             }
         }
-        //TODO Replace "EMPTY_LINE_PLACE" with code for displaying lines of surrounds
+        //TODO Replace "EMPTY_LINE_PLACE" with code for displaying lines of captures
         return String.valueOf(EMPTY_LINE_PLACE);
     }
 
@@ -86,19 +86,19 @@ public class Field {
     }
 
 
-    public ArrayList<Capture> findAllSurrounds(Dot dot) {
+    public ArrayList<Capture> findAllCaptures(Dot dot) {
         ArrayList<Capture> result = new ArrayList<Capture>();
         Capture capture = new Capture();
-        findSurroundsRecursively(dot, result, capture);
-        deleteSameSurround(result);
+        findCapturesRecursively(dot, result, capture);
+        deleteSameCaptures(result);
 
-        //TODO Place function for removing empty surrounds
-        //TODO Place function for removing biggest surrounds with same imprisoned dots
+        //TODO Place function for removing empty captures
+        //TODO Place function for removing biggest captures with same imprisoned dots
         return result;
     }
 
-    private void findSurroundsRecursively(Dot dot, ArrayList<Capture> result,
-                                          Capture capture) {
+    private void findCapturesRecursively(Dot dot, ArrayList<Capture> result,
+                                         Capture capture) {
         ArrayList<Dot> availableDots = findAvailableDots(dot, capture);
         for(Dot currentDot : availableDots) {
             Barrier line = new Barrier(dot, currentDot);
@@ -113,7 +113,7 @@ public class Field {
                     case -1:
                         break;
                     default:
-                        findSurroundsRecursively(currentDot, result, capture);
+                        findCapturesRecursively(currentDot, result, capture);
                 }
             }
         }
@@ -122,7 +122,7 @@ public class Field {
         }
     }
 
-    private void deleteSameSurround(ArrayList<Capture> captures) {
+    private void deleteSameCaptures(ArrayList<Capture> captures) {
         if(captures.size() < 2) {
             return;
         }
@@ -138,7 +138,7 @@ public class Field {
 
     private ArrayList<Dot> findAvailableDots(Dot dot, Capture capture) {
         ArrayList<Dot> result = new ArrayList<Dot>();
-        // converts "i" int dots coordinates, starting from from the top dot,
+        // converts "i" into dots coordinates, starting from from the top dot,
         // counterclockwise
         int x = dot.getX() + 1;
         int y = dot.getY() - 1;

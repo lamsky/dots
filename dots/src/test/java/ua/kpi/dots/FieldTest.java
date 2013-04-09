@@ -182,7 +182,7 @@ public class FieldTest {
         placeDotOnFieldFirstPlayer(1, 2);
         placeDotOnFieldFirstPlayer(2, 1);
         testDot = new Dot(0, 1, Player.PLAYER_SET_0[0]);
-        ArrayList<Capture> captures = field.findAllSurrounds(testDot);
+        ArrayList<Capture> captures = field.findAllCaptures(testDot);
 
         Dot dotA = new Dot(0, 1, Player.PLAYER_SET_0[0]);
         Dot dotB = new Dot(1, 0, Player.PLAYER_SET_0[0]);
