@@ -15,13 +15,13 @@ public class PlayerTest {
 
     @Test
     public void shouldPlayerPlaceDot() {
-        Player player = new Player(Player.PLAYER_SET_0);
+        Player player = new Player(DisplaySymbols.PLAYER_SET_0);
         assertNotNull(player.placeDot(field.toString()));
     }
 
     @Test
     public void shouldPlayerReturnDot() {
-        Player player = new Player(Player.PLAYER_SET_0);
+        Player player = new Player(DisplaySymbols.PLAYER_SET_0);
         assertNotNull(player.getDot(0, 0));
     }
 }

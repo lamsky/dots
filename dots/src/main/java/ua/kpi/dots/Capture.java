@@ -14,13 +14,17 @@ public class Capture {
     }
 
     public int addBarrier(Barrier line) {
+        if (line == null) {
+            throw new IllegalArgumentException();
+        }
+
         if(lines.size() == 0) {
             lines.add(line);
             return 0;
         }
 
         Barrier lastLine = lines.get(lines.size() - 1);
-        if (!line.continuesLine(lastLine) ) {
+        if (!line.canConnect(lastLine) ) {
             throw new IllegalArgumentException();
         }
 

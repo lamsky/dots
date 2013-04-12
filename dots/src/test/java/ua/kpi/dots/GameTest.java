@@ -14,8 +14,8 @@ public class GameTest {
 
     @Before
     public void init() {
-        red = new Player(Player.PLAYER_SET_0);
-        blue = new Player(Player.PLAYER_SET_1);
+        red = new Player(DisplaySymbols.PLAYER_SET_0);
+        blue = new Player(DisplaySymbols.PLAYER_SET_1);
         field = new Field(10);
         game = new Game(field, red, blue);
     }
@@ -40,14 +40,14 @@ public class GameTest {
     @Test
     public void shouldPlayerDoMove_WhenGameCreates() {
         game = new Game(new Field(1), red, blue);
-        game.doMove(red);
-        assertEquals(game.getField(), Player.PLAYER_SET_0[0] + "\n");
+        game.placeDot(red);
+        assertEquals(game.getField(), DisplaySymbols.PLAYER_SET_0[0] + "\n");
     }
 
     @Test
     public void shouldPlacePointInAllAvailableCell_WhenTwoRandomPlayers() {
-        Player randomRed = new RandomPlayer(Player.PLAYER_SET_0);
-        Player randomBlue = new RandomPlayer(Player.PLAYER_SET_1);
+        Player randomRed = new RandomPlayer(DisplaySymbols.PLAYER_SET_0);
+        Player randomBlue = new RandomPlayer(DisplaySymbols.PLAYER_SET_1);
         Game game = new Game(field, randomRed, randomBlue);
         game.run();
         String field = game.getField();

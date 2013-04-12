@@ -24,7 +24,7 @@ public class Game {
         return field.toString();
     }
 
-    public void doMove(Player player) {
+    public void placeDot(Player player) {
         Dot dot = player.placeDot(field.toString());
         field.placeDot(dot.getX(), dot.getY(), dot);
     }
@@ -34,15 +34,20 @@ public class Game {
             if (!field.isAvailableMove()) {
                 return;
             }
-            doMove(red);
+            placeDot(red);
             if (!field.isAvailableMove()) {
                 return;
             }
-            doMove(blue);
+            placeDot(blue);
         }
     }
 
     public static void main(String[] args) {
+        Field field = new Field(10);
+        Player player1 = new RandomPlayer(DisplaySymbols.PLAYER_SET_0);
+        Player player2 = new RandomPlayer(DisplaySymbols.PLAYER_SET_1);
+        Game game = new Game(field, player1, player2);
+        game.run();
 
     }
 

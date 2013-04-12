@@ -18,7 +18,7 @@ public class FieldTest {
     @Before
     public void init() {
         field = new Field(10);
-        testDot = new Dot(0, 0, Player.PLAYER_SET_0[0]);
+        testDot = new Dot(0, 0, DisplaySymbols.PLAYER_SET_0[0]);
     }
 
     private void placeDotOnField(int x, int y, char label) {
@@ -27,11 +27,11 @@ public class FieldTest {
     }
 
     private void placeDotOnFieldFirstPlayer(int x, int y) {
-        placeDotOnField(x, y, Player.PLAYER_SET_0[0]);
+        placeDotOnField(x, y, DisplaySymbols.PLAYER_SET_0[0]);
     }
 
     private void placeDotOnFieldSecondPlayer(int x, int y) {
-        placeDotOnField(x, y, Player.PLAYER_SET_1[0]);
+        placeDotOnField(x, y, DisplaySymbols.PLAYER_SET_1[0]);
     }
 
 
@@ -181,13 +181,13 @@ public class FieldTest {
         placeDotOnFieldFirstPlayer(1, 0);
         placeDotOnFieldFirstPlayer(1, 2);
         placeDotOnFieldFirstPlayer(2, 1);
-        testDot = new Dot(0, 1, Player.PLAYER_SET_0[0]);
+        testDot = new Dot(0, 1, DisplaySymbols.PLAYER_SET_0[0]);
         ArrayList<Capture> captures = field.findAllCaptures(testDot);
 
-        Dot dotA = new Dot(0, 1, Player.PLAYER_SET_0[0]);
-        Dot dotB = new Dot(1, 0, Player.PLAYER_SET_0[0]);
-        Dot dotC = new Dot(2, 1, Player.PLAYER_SET_0[0]);
-        Dot dotD = new Dot(1, 2, Player.PLAYER_SET_0[0]);
+        Dot dotA = new Dot(0, 1, DisplaySymbols.PLAYER_SET_0[0]);
+        Dot dotB = new Dot(1, 0, DisplaySymbols.PLAYER_SET_0[0]);
+        Dot dotC = new Dot(2, 1, DisplaySymbols.PLAYER_SET_0[0]);
+        Dot dotD = new Dot(1, 2, DisplaySymbols.PLAYER_SET_0[0]);
         Capture goodCapture = new Capture();
         goodCapture.addBarrier(new Barrier(dotA, dotB));
         goodCapture.addBarrier(new Barrier(dotB, dotC));

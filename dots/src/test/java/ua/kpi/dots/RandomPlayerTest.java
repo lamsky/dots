@@ -12,7 +12,7 @@ public class RandomPlayerTest {
 
     @Test
     public void shouldRandomPlayerCorrectPlaceDot_WhenIsAvailableOnePlace() {
-        RandomPlayer randomPlayer = new RandomPlayer(Player.PLAYER_SET_0);
+        RandomPlayer randomPlayer = new RandomPlayer(DisplaySymbols.PLAYER_SET_0);
         String field = "◯ ◯ ◯\n"
                      + "     \n"
                      + "◯ ◯ ∙\n"

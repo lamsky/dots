@@ -9,16 +9,13 @@ public class Barrier {
     private Dot dotB;
 
     public Barrier(Dot dotA, Dot dotB) {
-        checkDots(dotA, dotB);
-        this.dotA = dotA;
-        this.dotB = dotB;
-    }
-
-    private void checkDots(Dot dotA, Dot dotB) {
-        if (!isCorrectDistance(dotA, dotB) || !dotA.isSamePlayer(dotB)
+        if (       !isCorrectDistance(dotA, dotB)
+                || !dotA.isSamePlayer(dotB)
                 || !dotA.isDifferentCoordinates(dotB)){
             throw new IllegalArgumentException();
         }
+        this.dotA = dotA;
+        this.dotB = dotB;
     }
 
     @Override
@@ -40,8 +37,8 @@ public class Barrier {
                 && (Math.abs(dotA.getY() - dotB.getY()) < 2);
     }
 
-    public boolean continuesLine(Barrier previousLine) {
-        return this.dotA.equals(previousLine.dotB);
+    public boolean canConnect(Barrier previousLine) {
+        return dotA.equals(previousLine.dotB);
     }
 
     public boolean isSame(Barrier line) {
