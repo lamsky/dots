@@ -146,7 +146,7 @@ public class Field {
             x += delta(i + 6);
             y += delta(i);
             if ((x < size) && (x >= 0) && (y < size) && (y >= 0) && (dots[x][y] != null)) {
-                if (dot.isSamePlayerDots(dots[x][y]) && availableLine(dot, dots[x][y]) && !capture.isUsedWithoutStartDot(dots[x][y])) {
+                if (dot.isSamePlayer(dots[x][y]) && availableLine(dot, dots[x][y]) && !capture.isUsedWithoutStartDot(dots[x][y])) {
                     result.add(dots[x][y]);
                 }
             }

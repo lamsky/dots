@@ -15,7 +15,7 @@ public class Barrier {
     }
 
     private void checkDots(Dot dotA, Dot dotB) {
-        if (!isCorrectDistance(dotA, dotB) || !dotA.isSamePlayerDots(dotB)
+        if (!isCorrectDistance(dotA, dotB) || !dotA.isSamePlayer(dotB)
                 || !dotA.isDifferentCoordinates(dotB)){
             throw new IllegalArgumentException();
         }

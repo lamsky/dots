@@ -40,7 +40,16 @@ public class CaptureTest {
         lineBC = new Barrier(dotB, dotC);
         lineAD = new Barrier(dotA, dotD);
 
-        capture = new Capture(lineAB);
+        capture = new Capture();
+        capture.addBarrier(lineAB);
+    }
+
+    public Capture createCapture(Barrier... lines) {
+        Capture result = new Capture();
+        for (Barrier line : lines) {
+            result.addBarrier(line);
+        }
+        return result;
     }
 
     @Test
@@ -51,11 +60,6 @@ public class CaptureTest {
     @Test (expected = IllegalArgumentException.class)
     public void shouldThrowException_WhenAddBadLine() {
         capture.addBarrier(lineDC);
-    }
-
-    @Test (expected = IllegalArgumentException.class)
-    public void shouldThrowException_WhenAddSameLine() {
-        capture.addBarrier(lineBA);
     }
 
     @Test
@@ -81,24 +85,16 @@ public class CaptureTest {
 
     @Test
     public void shouldCheckCrossingLines() {
-        capture = new Capture();
-        capture.addBarrier(lineBC);
+        capture = createCapture(lineBC);
         assertFalse(capture.isCrossing(lineCB));
         assertTrue(capture.isCrossing(lineAD));
     }
 
     @Test
     public void shouldCheckForSameSurrond() {
-        Capture capture1 = new Capture(lineAB);
-        capture1.addBarrier(lineBC);
-
-        Capture capture2 = new Capture(lineCB);
-        capture2.addBarrier(lineBA);
-
-        Capture capture3 = new Capture(lineAB);
-        capture3.addBarrier(lineBD);
-
-
+        Capture capture1 = createCapture(lineAB, lineBC);
+        Capture capture2 = createCapture(lineCB, lineBA);
+        Capture capture3 = createCapture(lineAB, lineBD);
         assertTrue(capture1.isSame(capture1));
         assertTrue(capture1.isSame(capture2));
         assertFalse(capture1.isSame(capture3));

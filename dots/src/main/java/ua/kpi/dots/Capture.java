@@ -9,43 +9,36 @@ import java.util.ArrayList;
 public class Capture {
     private ArrayList<Barrier> lines;
 
+    /*
     public Capture(Barrier line) {
         lines = new ArrayList<Barrier>();
         lines.add(line);
     }
-
+    */
     public Capture() {
         lines = new ArrayList<Barrier>();
     }
 
     public int addBarrier(Barrier line) {
-        if (line == null) {
-            throw new IllegalArgumentException();
-        }
-
         if(lines.size() == 0) {
             lines.add(line);
             return 0;
         }
 
         Barrier lastLine = lines.get(lines.size() - 1);
-        if (!isOriginal(line)) {
-            throw new IllegalArgumentException();
-        }
         if (!line.continuesLine(lastLine) ) {
             throw new IllegalArgumentException();
         }
-
 
         if (endIsStart(line)) {
             lines.add(line);
             return 1;
         }
+
         if(contain(line.getDotB())) {
             return -1;
-        } else {
-            lines.add(line);
         }
+        lines.add(line);
         return 0;
     }
 
@@ -75,9 +68,9 @@ public class Capture {
 
     @Override
     public Capture clone()  {
-        Capture result = new Capture(lines.get(0).clone());
-        for (int index = 1; index < lines.size(); index++) {
-            result.lines.add(this.lines.get(index).clone());
+        Capture result = new Capture();
+        for (Barrier currentLine : lines) {
+            result.lines.add(currentLine.clone());
         }
         return result;
     }

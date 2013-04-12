@@ -20,6 +20,7 @@ public class Dot {
         return String.valueOf(label);
     }
 
+
     @Override
     public int hashCode() {
         return x + y + label;
@@ -50,7 +51,7 @@ public class Dot {
         return y;
     }
 
-    public boolean isSamePlayerDots(Dot dot) {
+    public boolean isSamePlayer(Dot dot) {
         return this.label == dot.label;
     }
 

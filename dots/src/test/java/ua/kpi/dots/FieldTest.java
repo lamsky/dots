@@ -188,7 +188,8 @@ public class FieldTest {
         Dot dotB = new Dot(1, 0, Player.PLAYER_SET_0[0]);
         Dot dotC = new Dot(2, 1, Player.PLAYER_SET_0[0]);
         Dot dotD = new Dot(1, 2, Player.PLAYER_SET_0[0]);
-        Capture goodCapture = new Capture(new Barrier(dotA, dotB));
+        Capture goodCapture = new Capture();
+        goodCapture.addBarrier(new Barrier(dotA, dotB));
         goodCapture.addBarrier(new Barrier(dotB, dotC));
         goodCapture.addBarrier(new Barrier(dotC, dotD));
         goodCapture.addBarrier(new Barrier(dotD, dotA));
