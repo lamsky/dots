@@ -11,7 +11,7 @@ public class Field {
     Dot[][] dots;
 
     public Field(int size) {
-        if (size <= 0) {
+        if (size < 1) {
             throw new IllegalArgumentException();
         }
         this.size = size;
@@ -32,11 +32,11 @@ public class Field {
     }
 
     private boolean isValidPosition(int x, int y) {
-        //TODO write code for check come in enemy capture
         return (x < size) && (x >= 0) && (y < size) && (y >= 0) && isFree(x, y);
     }
 
     public boolean isFree(int x, int y) {
+        //TODO write code for check come in enemy capture
         return (dots[x][y] == null);
     }
 
@@ -52,13 +52,13 @@ public class Field {
     private String buildLine(int row) {
         StringBuilder line = new StringBuilder();
         for (int column = 0; column < size*2 - 1; column++) {
-            line.append(selectDotsSymbol(column, row));
+            line.append(selectSymbol(column, row));
         }
         line.append("\n");
         return line.toString();
     }
 
-    private String selectDotsSymbol(int column, int row) {
+    private String selectSymbol(int column, int row) {
         if(column%2 == 0 && row%2 == 0) {
             int x = column/2;
             int y = row/2;
@@ -90,7 +90,7 @@ public class Field {
         ArrayList<Capture> result = new ArrayList<Capture>();
         Capture capture = new Capture();
         findCapturesRecursively(dot, result, capture);
-        deleteSameCaptures(result);
+        cleanDuplicate(result);
 
         //TODO Place function for removing empty captures
         //TODO Place function for removing biggest captures with same imprisoned dots
@@ -120,7 +120,7 @@ public class Field {
         capture.removeLastLine();
     }
 
-    private void deleteSameCaptures(ArrayList<Capture> captures) {
+    private void cleanDuplicate(ArrayList<Capture> captures) {
         if(captures.size() < 2) {
             return;
         }

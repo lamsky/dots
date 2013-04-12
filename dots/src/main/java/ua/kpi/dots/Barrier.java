@@ -18,6 +18,19 @@ public class Barrier {
         this.dotB = dotB;
     }
 
+    private boolean isCorrectDistance(Dot dotA, Dot dotB) {
+        return (Math.abs(dotA.getX() - dotB.getX()) == 1)
+                || (Math.abs(dotA.getY() - dotB.getY()) == 1);
+    }
+
+    public boolean isSame(Barrier line) {
+        Dot dotA1 = line.dotA;
+        Dot dotB1 = line.dotB;
+        return (dotA1.equals(dotA) && dotB1.equals(dotB))
+                || (dotA1.equals(dotB) && dotB1.equals(dotA));
+    }
+
+
     @Override
     public Barrier clone() {
         return new Barrier(dotA.clone(), dotB.clone());
@@ -27,25 +40,12 @@ public class Barrier {
         return dotA.clone();
     }
 
-
     public Dot getDotB() {
         return dotB.clone();
     }
 
-    private boolean isCorrectDistance(Dot dotA, Dot dotB) {
-        return (Math.abs(dotA.getX() - dotB.getX()) < 2)
-                && (Math.abs(dotA.getY() - dotB.getY()) < 2);
-    }
-
     public boolean canConnect(Barrier previousLine) {
         return dotA.equals(previousLine.dotB);
-    }
-
-    public boolean isSame(Barrier line) {
-        Dot dotA1 = line.dotA;
-        Dot dotB1 = line.dotB;
-        return (dotA1.equals(dotA) && dotB1.equals(dotB))
-            || (dotA1.equals(dotB) && dotB1.equals(dotA));
     }
 
     public boolean contain(Dot dot) {

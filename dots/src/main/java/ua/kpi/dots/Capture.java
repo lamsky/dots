@@ -13,6 +13,15 @@ public class Capture {
         lines = new ArrayList<Barrier>();
     }
 
+    @Override
+    public Capture clone()  {
+        Capture result = new Capture();
+        for (Barrier currentLine : lines) {
+            result.lines.add(currentLine.clone());
+        }
+        return result;
+    }
+
     public int addBarrier(Barrier line) {
         if (line == null) {
             throw new IllegalArgumentException();
@@ -62,15 +71,6 @@ public class Capture {
             }
         }
         return true;
-    }
-
-    @Override
-    public Capture clone()  {
-        Capture result = new Capture();
-        for (Barrier currentLine : lines) {
-            result.lines.add(currentLine.clone());
-        }
-        return result;
     }
 
     public void removeLastLine() {

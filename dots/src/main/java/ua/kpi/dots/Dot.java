@@ -55,6 +55,6 @@ public class Dot {
     }
 
     public boolean isDifferentCoordinates(Dot dot) {
-        return !((this.x == dot.x) && (this.y == dot.y));
+        return (this.x != dot.x) || (this.y != dot.y);
     }
 }
