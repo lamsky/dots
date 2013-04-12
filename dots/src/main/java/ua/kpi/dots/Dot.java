@@ -20,7 +20,6 @@ public class Dot {
         return String.valueOf(label);
     }
 
-
     @Override
     public int hashCode() {
         return x + y + label;

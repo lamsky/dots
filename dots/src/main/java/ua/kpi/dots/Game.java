@@ -20,8 +20,8 @@ public class Game {
         return blue;
     }
 
-    public Field getField() {
-        return field;
+    public String getField() {
+        return field.toString();
     }
 
     public void doMove(Player player) {

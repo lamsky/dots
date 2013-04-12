@@ -41,8 +41,7 @@ public class GameTest {
     public void shouldPlayerDoMove_WhenGameCreates() {
         game = new Game(new Field(1), red, blue);
         game.doMove(red);
-        assertEquals(game.getField().toString(),
-                Player.PLAYER_SET_0[0] + "\n");
+        assertEquals(game.getField(), Player.PLAYER_SET_0[0] + "\n");
     }
 
     @Test
@@ -51,7 +50,7 @@ public class GameTest {
         Player randomBlue = new RandomPlayer(Player.PLAYER_SET_1);
         Game game = new Game(field, randomRed, randomBlue);
         game.run();
-        String field = game.getField().toString();
+        String field = game.getField();
         assertEquals(-1, field.indexOf(Field.EMPTY_CELL));
     }
 
