@@ -13,9 +13,6 @@ public class RandomPlayer extends Player {
 
     @Override
     public Dot placeDot(String field) {
-
-        System.out.println(field + "\n");
-
         int size = (((int) Math.sqrt(field.length())) + 1) / 2;
         int x;
         int y;

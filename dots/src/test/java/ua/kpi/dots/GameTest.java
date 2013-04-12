@@ -51,7 +51,7 @@ public class GameTest {
         Game game = new Game(field, randomRed, randomBlue);
         game.run();
         String field = game.getField();
-        assertEquals(-1, field.indexOf(Field.EMPTY_CELL));
+        assertEquals(-1, field.indexOf(DisplaySymbols.EMPTY_CELL));
     }
 
     // Players take turns

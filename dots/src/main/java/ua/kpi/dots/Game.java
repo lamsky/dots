@@ -1,5 +1,7 @@
 package ua.kpi.dots;
 
+import static ua.kpi.dots.DisplaySymbols.*;
+
 public class Game {
     private Field field;
 
@@ -44,11 +46,10 @@ public class Game {
 
     public static void main(String[] args) {
         Field field = new Field(10);
-        Player player1 = new RandomPlayer(DisplaySymbols.PLAYER_SET_0);
-        Player player2 = new RandomPlayer(DisplaySymbols.PLAYER_SET_1);
+        Player player1 = new RandomPlayer(PLAYER_SET_0);
+        Player player2 = new RandomPlayer(PLAYER_SET_1);
         Game game = new Game(field, player1, player2);
         game.run();
 
     }
-
 }

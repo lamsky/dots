@@ -3,10 +3,9 @@ package ua.kpi.dots;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Field {
+import static ua.kpi.dots.DisplaySymbols.*;
 
-    public static char EMPTY_CELL = '∙';
-    public static char EMPTY_LINE_PLACE = ' ';
+public class Field {
 
     private int size;
     Dot[][] dots;
