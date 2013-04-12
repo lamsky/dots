@@ -9,12 +9,6 @@ import java.util.ArrayList;
 public class Capture {
     private ArrayList<Barrier> lines;
 
-    /*
-    public Capture(Barrier line) {
-        lines = new ArrayList<Barrier>();
-        lines.add(line);
-    }
-    */
     public Capture() {
         lines = new ArrayList<Barrier>();
     }
@@ -76,6 +70,9 @@ public class Capture {
     }
 
     public void removeLastLine() {
+        if(lines.size() == 0) {
+            return;
+        }
         lines.remove(lines.size() - 1);
     }
 

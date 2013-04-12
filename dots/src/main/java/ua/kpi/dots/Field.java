@@ -1,6 +1,7 @@
 package ua.kpi.dots;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Field {
 
@@ -97,7 +98,7 @@ public class Field {
         return result;
     }
 
-    private void findCapturesRecursively(Dot dot, ArrayList<Capture> result,
+    private void findCapturesRecursively(Dot dot, List<Capture> result,
                                          Capture capture) {
         ArrayList<Dot> availableDots = findAvailableDots(dot, capture);
         for(Dot currentDot : availableDots) {
@@ -117,9 +118,7 @@ public class Field {
                 }
             }
         }
-        if(capture.size() > 0) {
-            capture.removeLastLine();
-        }
+        capture.removeLastLine();
     }
 
     private void deleteSameCaptures(ArrayList<Capture> captures) {
